@@ -42,6 +42,7 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddDbContext<UserApiDbContext>(options =>
         options.UseSqlite(builder.Configuration.GetConnectionString("UserDatabase")));
+
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<INotifierService, NotifierService>();
 builder.Services.AddTransient<IUserRepository, UserRepository>();

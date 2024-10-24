@@ -7,7 +7,6 @@ public class ProductControllerTest
     private readonly Mock<INotifierService> _notifierService;
     private readonly ProductController _productController;
 
-
     public ProductControllerTest()
     {
         _autoMocker = new AutoMocker();

@@ -68,4 +68,23 @@ public class ProductRepositoryTest
         result.Should().BeEquivalentTo(products);
     }
 
+    [Fact]
+    public async Task GetById_ShouldReturnProduct_WhenThereIsDataIntoDatabase()
+    {
+        // Arrange
+        var product = ProductFaker.ProductValid();
+
+        _productApiDbContext.Products.AddAsync(product);
+        _productApiDbContext.SaveChangesAsync();
+
+        // Act
+        var result = await _productRepository.GetById(product.Id);
+
+        // Assert
+        result.Should().NotBeNull();
+        result.Should().BeOfType<Product>();
+        result.Should().BeEquivalentTo(product);
+        result.Id.Should().Be(1);
+    }
+
 }

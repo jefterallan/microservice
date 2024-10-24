@@ -1,0 +1,55 @@
+Test project Bibliotecas adicionais:
+- Moq
+- Moq.AutoMock
+- FluentAssertions
+- coverlet.msbuild
+- Microsoft.EntityFrameworkCore.InMemory
+
+------------------------------------------
+
+Questões que ficaram em aberto:
+
+Pergunta: Qual a real diferença entre os tipos de autenticações (Basic Auth, Apikey, JWT):
+
+Basic Auth
+
+Funcionamento: Envia o nome de usuário e a senha em cada solicitação HTTP, codificados em base64.
+
+Segurança: Não é muito seguro sem HTTPS, pois as credenciais podem ser facilmente decodificadas.
+
+Uso: Simples de implementar e útil para autenticação rápida e básica.
+
+Desvantagens: Enviar as credenciais em cada solicitação pode ser um risco se o canal não for seguro. Sem mecanismos de revogação.
+
+
+
+API Key
+
+Funcionamento: Envia uma chave de API (uma string única) em cada solicitação HTTP, geralmente no cabeçalho, na URL ou no corpo da solicitação.
+
+Segurança: Mais seguro que Basic Auth, mas ainda depende de HTTPS para proteção.
+
+Uso: Comum em serviços de API, onde uma chave única é usada para autenticar e rastrear o uso.
+
+Desvantagens: Não é ideal para autenticação de usuários, pois não tem suporte nativo para controle de acesso granular ou expiração/revogação de tokens.
+
+
+
+JWT (JSON Web Token)
+
+Funcionamento: Usa um token que contém informações sobre o usuário, assinado digitalmente. O token é enviado no cabeçalho Authorization como um Bearer token.
+
+Segurança: Altamente seguro quando usado com HTTPS. O token pode incluir dados personalizados e é assinado para evitar adulterações.
+
+Uso: Muito usado em aplicações modernas para autenticação e autorização. Permite verificar a identidade do usuário sem consultas adicionais ao banco de dados.
+
+Desvantagens: O token pode ser volumoso se contiver muitas informações. Tokens têm um tempo de vida limitado e precisam ser renovados periodicamente.
+
+
+Cada método tem suas próprias vantagens e desvantagens. A escolha certa depende do caso de uso específico e do nível de segurança necessário.
+
+
+
+*** Se eu esqueci de mais alguma questão pode me contatar no linkedin (jefterallan), assim que possivel eu estarei respondendo.
+
+Agradeço a participação de vocês, Obrigado !!!

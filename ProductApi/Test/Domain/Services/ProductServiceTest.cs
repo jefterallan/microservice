@@ -16,6 +16,7 @@ public class ProductServiceTest
     }
 
     [Fact]
+    //nome do metodo _ o que ele deve retornar _ quando ele deve retornar
     public async Task GetAll_ShouldReturnAll_WhenThereAreDataIntoDatabase()
     {
         // Arrange
@@ -51,6 +52,7 @@ public class ProductServiceTest
         result.Id.Should().Be(1);
         result.Price.Should().Be(100);
         result.Name.Should().Be("Unit Testing");
+        result.Description.Should().Be("Product Description");
 
         _productRepository.Verify(x => x.GetById(It.IsAny<int>()), Times.Once);
         _notifierService.Verify(x => x.AddLog(It.IsAny<string>()), Times.Never);
@@ -58,6 +60,9 @@ public class ProductServiceTest
 
     [Theory]
     [InlineData(-1)]
+    [InlineData(-2)]
+    [InlineData(-3)]
+    [InlineData(-4)]
     [InlineData(0)]
     public async Task GetProductById_ShouldReturnNull_WhenIdIsInvalid(int id)
     {
